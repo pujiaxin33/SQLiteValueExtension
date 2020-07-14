@@ -42,15 +42,32 @@ If you want to store a custom type array or dictionary, you also need to make th
 Sample code:
 ```Swift
 extension BasicInfoModel: Value, StringValueExpressible {
-    typealias Datatype = String
     public static var declaredDatatype: String { String.declaredDatatype }
-    public static func fromDatatypeValue(_ datatypeValue: Datatype) -> BasicInfoModel {
+    public static func fromDatatypeValue(_ datatypeValue: String) -> BasicInfoModel {
         return fromStringValue(datatypeValue)
     }
-    public var datatypeValue: Datatype {
+    public var datatypeValue: String {
         return stringValue
     }
 
+    public static func fromStringValue(_ stringValue: String) -> BasicInfoModel {
+        return BasicInfoModel(JSONString: stringValue) ?? BasicInfoModel(JSON: [String : Any]())!
+    }
+    public var stringValue: String {
+        return toJSONString() ?? ""
+    }
+}
+```
+
+### Reduce boilerplate code
+
+From the above code, you can see that after conform the `Value` and `StringValueExpressible` protocols, many boilerplate codes need to be added. Therefore, the `SQLiteValueStorable` protocol is added, which is defined as follows
+```Swift
+public protocol SQLiteValueStorable: Value, StringValueExpressible { }
+```
+Then look at the optimized code as follows:
+```Swift
+extension BasicInfoModel: SQLiteValueStorable {
     public static func fromStringValue(_ stringValue: String) -> BasicInfoModel {
         return BasicInfoModel(JSONString: stringValue) ?? BasicInfoModel(JSON: [String : Any]())!
     }

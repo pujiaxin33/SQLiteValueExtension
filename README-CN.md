@@ -38,15 +38,32 @@ SQLite.swift原生支持`Int`、`Int64`、`Bool`、`Double`、`String`、`Blob`�
 示例代码：
 ```Swift
 extension BasicInfoModel: Value, StringValueExpressible {
-    typealias Datatype = String
     public static var declaredDatatype: String { String.declaredDatatype }
-    public static func fromDatatypeValue(_ datatypeValue: Datatype) -> BasicInfoModel {
+    public static func fromDatatypeValue(_ datatypeValue: String) -> BasicInfoModel {
         return fromStringValue(datatypeValue)
     }
-    public var datatypeValue: Datatype {
+    public var datatypeValue: String {
         return stringValue
     }
 
+    public static func fromStringValue(_ stringValue: String) -> BasicInfoModel {
+        return BasicInfoModel(JSONString: stringValue) ?? BasicInfoModel(JSON: [String : Any]())!
+    }
+    public var stringValue: String {
+        return toJSONString() ?? ""
+    }
+}
+```
+
+### 减少样板代码
+
+从上面的代码可以看到遵从`Value`、`StringValueExpressible`协议之后，需要添加许多样板代码。所以，添加了`SQLiteValueStorable`协议，它的定义如下
+```Swift
+public protocol SQLiteValueStorable: Value, StringValueExpressible { }
+```
+然后再看一下优化之后的代码，如下：
+```Swift
+extension BasicInfoModel: SQLiteValueStorable {
     public static func fromStringValue(_ stringValue: String) -> BasicInfoModel {
         return BasicInfoModel(JSONString: stringValue) ?? BasicInfoModel(JSON: [String : Any]())!
     }
