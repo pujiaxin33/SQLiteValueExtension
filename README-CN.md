@@ -1,14 +1,13 @@
 # SQLiteValueExtension
 SQLiteValueExtension for SQLite.swift
+用于解决SQLite.swift没有办法直接存储数组和字典。传统的做法就是先把数组和字典转成字符串，再进行存储。查询的时候再把字符串转成数组或字典。
 
-For solving SQLite.swift there is no way to directly store arrays and dictionaries. The traditional approach is to convert arrays and dictionaries into strings before storing them. When querying, convert the string into an array or dictionary.
 
+# 使用
 
-# Usage
-
-For arrays and dictionaries whose element types meet the conditions (the specific conditions will be described below), SQLite database operations can be performed directly.
+对于元素类型符合条件（下面会讲具体条件）的数组、字典，可以直接进行SQLite数据库操作。
 ```Swift
-//Expression defines
+//Expression定义
 static let intArray = Expression<[Int]?>("int_array")
 static let intStringDict = Expression<[Int:String]?>("int_string_dict")
 //Insert
@@ -26,17 +25,17 @@ for data in rows {
 ```
 
 
-## Origin Type
-SQLite.Swift natively supports `Int`, `Int64`, `Bool`, `Double`, `String`, `Blob`, `Data`, `Date` types, for which internal extensions are added to conform the `StringValueExpressible` protocol . Therefore, if Array.Element, Dictionary.Key and Vaule are the above types, after the introduction of `SQLiteValueExtension` library, it can be stored directly.
+## 原生类型
+SQLite.swift原生支持`Int`、`Int64`、`Bool`、`Double`、`String`、`Blob`、`Data`、`Date`类型，内部对于这些类型添加了extension遵从`StringValueExpressible`协议。所以，如果Array.Element、Dictionary.Key和Vaule是以上这些类型，引入`SQLiteValueExtension`库之后，就可以直接存储。
 
-## Custom Type
+## 自定义类型
 
-### conform `Value`、`StringValueExpressible`
-For custom types that want to be stored in the database, you need to comform the `Value` protocol. For details, refer to the official document of `SQLite.swift`:[custom-types](https://github.com/stephencelis/SQLite.swift/blob/master/Documentation/Index.md#custom-types)。
+### 遵从`Value`、`StringValueExpressible`协议
+对于自定义类型想要存入数据库，需要遵从`Value`协议，具体参考`SQLite.swift`官方文档：[custom-types](https://github.com/stephencelis/SQLite.swift/blob/master/Documentation/Index.md#custom-types)。
 
-If you want to store a custom type array or dictionary, you also need to make the custom type comform the `StringValueExpressible` protocol.
+如果想要存入自定义类型数组、字典，还需要让自定义类型遵从`StringValueExpressible`协议。
 
-Sample code:
+示例代码：
 ```Swift
 extension BasicInfoModel: Value, StringValueExpressible {
     typealias Datatype = String
@@ -57,10 +56,10 @@ extension BasicInfoModel: Value, StringValueExpressible {
 }
 ```
 
-### Store custom type arrays and dictionaries
+### 存储自定义类型数组、字典
 
 ```Swift
-//Expression defines
+//Expression定义
 static let modelArray = Expression<[BasicInfoModel]?>("model_array")
 static let stringModelDict = Expression<[String:BasicInfoModel]?>("string_model_dict")
 //Insert
@@ -77,15 +76,15 @@ for data in rows {
 }
 ```
 
-### Dictionary.Key and Value type constraints
+### Dictionary.Key和Value的类型约束
 
-`Dictionary.Key` needs to comform `Hashable` and `StringValueExpressible` protocols;
-`Dictionary.Value` needs to comform the `StringValueExpressible` protocol;
-It can be directly stored in the database if it meets the above conditions.
+`Dictionary.Key`需要遵从`Hashable`和`StringValueExpressible`协议；
+`Dictionary.Value`需要遵从`StringValueExpressible`协议；
+符合以上条件即可直接存入数据库。
 
-## Added basic type support
+## 新增基础类型支持
 
-For example, if you want to store an array of type `Float`, add the following code:
+比如想要存储`Float`类型的数组，添加以下代码即可：
 ```Swift
 extension Float: Value, StringValueExpressible {
     public static var declaredDatatype: String { Double.declaredDatatype }
@@ -104,13 +103,13 @@ extension Float: Value, StringValueExpressible {
 }
 ```
 
-Other basic data types that you want to add can be supported by referring to this.
+其他想要新增的基础数据类型，参考这个来就可以支持。
 
-# Summary
+# 总结
 
-As long as `Array.Element`, `Dictionary.Key, Value` comform the `Value` and `StringValueExpressible` protocols, they can be directly stored in the database, without the need to do the conversion yourself.
+只要`Array.Element`、`Dictionary.Key、Value`遵从`Value`和`StringValueExpressible`协议，就可以直接存入数据库，不需要自己做转换。
 
-# Install
+# 安装
 
 ## Cocoapods
 

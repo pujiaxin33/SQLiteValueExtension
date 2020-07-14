@@ -72,8 +72,7 @@ extension Blob: StringValueExpressible {
 }
 extension Data: StringValueExpressible {
     public static func fromStringValue(_ stringValue: String) -> Data {
-        let blob = Blob.fromStringValue(stringValue)
-        return Data(blob.bytes)
+        return fromDatatypeValue(Blob.fromStringValue(stringValue))
     }
     public var stringValue: String {
         return datatypeValue.toHex()
@@ -81,11 +80,10 @@ extension Data: StringValueExpressible {
 }
 extension Date: StringValueExpressible {
     public static func fromStringValue(_ stringValue: String) -> Date {
-        let interval = TimeInterval(stringValue) ?? 0
-        return Date(timeIntervalSince1970: interval)
+        return fromDatatypeValue(stringValue)
     }
     public var stringValue: String {
-        return String(self.timeIntervalSince1970)
+        return datatypeValue
     }
 }
 //=====================Add New Type =====================
@@ -125,11 +123,8 @@ extension Array: Value where Element: StringValueExpressible {
         return result
     }
     public var stringValue: String {
-        var result = [String]()
-        for item in self {
-            result.append(item.stringValue)
-        }
-        if let data = try? JSONSerialization.data(withJSONObject: result, options: []) {
+        let stringArray = self.map { $0.stringValue }
+        if let data = try? JSONSerialization.data(withJSONObject: stringArray, options: []) {
             return String(data: data, encoding: .utf8) ?? ""
         }
         return ""
