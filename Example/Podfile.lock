@@ -1,0 +1,29 @@
+PODS:
+  - ObjectMapper (3.5.0)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - SQLiteValueExtension (0.0.1):
+    - SQLite.swift
+
+DEPENDENCIES:
+  - ObjectMapper (= 3.5.0)
+  - SQLiteValueExtension (from `../../SQLiteValueExtension`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ObjectMapper
+    - SQLite.swift
+
+EXTERNAL SOURCES:
+  SQLiteValueExtension:
+    :path: "../../SQLiteValueExtension"
+
+SPEC CHECKSUMS:
+  ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  SQLiteValueExtension: 635f7ae8a8417cad199ba2d43fddd43f39992d72
+
+PODFILE CHECKSUM: cdb39f1063865e575e173b7479d3871cf26f1294
+
+COCOAPODS: 1.7.5
