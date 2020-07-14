@@ -1,6 +1,6 @@
 {
   "name": "SQLiteValueExtension",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "summary": "SQLiteValueExtension",
   "homepage": "https://github.com/pujiaxin33/SQLiteValueExtension",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "swift_versions": "5.0",
   "source": {
     "git": "https://github.com/pujiaxin33/SQLiteValueExtension.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
   "frameworks": "UIKit",
   "source_files": [

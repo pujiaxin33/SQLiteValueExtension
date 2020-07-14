@@ -3,7 +3,7 @@ PODS:
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
-  - SQLiteValueExtension (0.0.1):
+  - SQLiteValueExtension (0.0.2):
     - SQLite.swift
 
 DEPENDENCIES:
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
-  SQLiteValueExtension: 635f7ae8a8417cad199ba2d43fddd43f39992d72
+  SQLiteValueExtension: 7ce289b044edee76d7e9e40068e258b490df1ae0
 
 PODFILE CHECKSUM: cdb39f1063865e575e173b7479d3871cf26f1294
 

@@ -173,3 +173,13 @@ extension Dictionary: SQLite.Value where Dictionary.Key: StringValueExpressible,
         return stringValue
     }
 }
+
+//=====================For Easy Use=====================
+public protocol SQLiteValueStorable: Value, StringValueExpressible { }
+public extension SQLiteValueStorable {
+    static var declaredDatatype: String { String.declaredDatatype }
+    var datatypeValue: String { stringValue }
+    static func fromDatatypeValue(_ datatypeValue: String) -> Self {
+        return fromStringValue(datatypeValue) as! Self
+    }
+}

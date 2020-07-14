@@ -12,16 +12,7 @@ import SQLiteValueExtension
 
 //因为SQLite和ObjectMapper库有操作符冲突，所以需要新创建一个分类文件用来处理Value和StringValueExpressible协议。
 
-extension BasicInfoModel: Value, StringValueExpressible {
-    typealias Datatype = String
-    public static var declaredDatatype: String { String.declaredDatatype }
-    public static func fromDatatypeValue(_ datatypeValue: Datatype) -> BasicInfoModel {
-        return fromStringValue(datatypeValue)
-    }
-    public var datatypeValue: Datatype {
-        return stringValue
-    }
-
+extension BasicInfoModel: SQLiteValueStorable {
     public static func fromStringValue(_ stringValue: String) -> BasicInfoModel {
         return BasicInfoModel(JSONString: stringValue) ?? BasicInfoModel(JSON: [String : Any]())!
     }
@@ -31,14 +22,11 @@ extension BasicInfoModel: Value, StringValueExpressible {
 }
 
 extension BasicInfoStatusModel: Value, StringValueExpressible {
-    typealias Datatype = String
     public static var declaredDatatype: String { String.declaredDatatype }
-    public static func fromDatatypeValue(_ datatypeValue: Datatype) -> BasicInfoStatusModel {
+    public static func fromDatatypeValue(_ datatypeValue: String) -> BasicInfoStatusModel {
         return fromStringValue(datatypeValue)
     }
-    public var datatypeValue: Datatype {
-        return stringValue
-    }
+    public var datatypeValue: String { stringValue }
 
     public static func fromStringValue(_ stringValue: String) -> BasicInfoStatusModel {
         return BasicInfoStatusModel(JSONString: stringValue) ?? BasicInfoStatusModel(JSON: [String : Any]())!
