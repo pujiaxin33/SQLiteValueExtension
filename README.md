@@ -3,6 +3,9 @@ SQLiteValueExtension for SQLite.swift
 
 For solving SQLite.swift there is no way to directly store arrays and dictionaries. The traditional approach is to convert arrays and dictionaries into strings before storing them. When querying, convert the string into an array or dictionary.
 
+# 中文文档地址
+
+[中文文档](https://github.com/pujiaxin33/SQLiteValueExtension/blob/master/README-CN.md)
 
 # Usage
 
