@@ -134,8 +134,9 @@ extension Float: Value, StringValueExpressible {
 pod 'SQLiteValueExtension'
 ```
 
+# 推荐
 
-
+[ModelAdaptor](https://github.com/pujiaxin33/ModelAdaptor): 是一个可以简化`ObjectMapper`和`SQLite.swift`操作的库。
 
 
 
