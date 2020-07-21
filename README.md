@@ -138,8 +138,9 @@ As long as `Array.Element`, `Dictionary.Key, Value` comform the `Value` and `Str
 pod 'SQLiteValueExtension'
 ```
 
+# Recommend
 
-
+[ModelAdaptor](https://github.com/pujiaxin33/ModelAdaptor): Simple JSON Object mapping and SQLite3 written in Swift.
 
 
 
