@@ -1,5 +1,5 @@
 # SQLiteValueExtension
-SQLiteValueExtension for SQLite.swift
+SQLiteValueExtension for [SQLite.swift](https://github.com/stephencelis/SQLite.swift)
 
 For solving SQLite.swift there is no way to directly store arrays and dictionaries. The traditional approach is to convert arrays and dictionaries into strings before storing them. When querying, convert the string into an array or dictionary.
 
