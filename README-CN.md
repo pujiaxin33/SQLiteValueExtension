@@ -134,6 +134,12 @@ extension Float: Value, StringValueExpressible {
 pod 'SQLiteValueExtension'
 ```
 
+## SPM
+
+从0.0.6版本开始支持。
+
+Xcode11的安装教程，可以参考文章：[在 Xcode 中使用 Swift Package](https://xiaozhuanlan.com/topic/9635421780)
+
 # 推荐
 
 [ModelAdaptor](https://github.com/pujiaxin33/ModelAdaptor): 是一个可以简化`ObjectMapper`和`SQLite.swift`操作的库。
