@@ -138,6 +138,12 @@ As long as `Array.Element`, `Dictionary.Key, Value` comform the `Value` and `Str
 pod 'SQLiteValueExtension'
 ```
 
+## SPM
+
+Supported from version 0.0.6  
+
+You can learn how to install package with SPM by reading [在 Xcode 中使用 Swift Package](https://xiaozhuanlan.com/topic/9635421780)
+
 # Recommend
 
 [ModelAdaptor](https://github.com/pujiaxin33/ModelAdaptor): Simple JSON Object mapping and SQLite3 written in Swift.
