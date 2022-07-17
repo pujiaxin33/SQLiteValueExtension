@@ -9,15 +9,15 @@ The data type that conforms to the `SQLiteValueStringExpressible` protocol, it c
 
 ## Native basic type
 The following basic types conform the `SQLiteValueStringExpressible` protocol.
--`Int`,
--`Int64`
--`Bool`
--`Double`
--`Float`
--`String`
--`Blob`
--`Data`
--`Date`
+- `Int`,
+- `Int64`
+- `Bool`
+- `Double`
+- `Float`
+- `String`
+- `Blob`
+- `Data`
+- `Date`
 
 ## Array, dictionary
 
@@ -117,5 +117,5 @@ For the installation tutorial of Xcode11, please refer to the article: [Use Swif
 
 # recommend
 
--[ModelAdaptor](https://github.com/pujiaxin33/ModelAdaptor): Lightweight ORM library based on `SQLite.swift`.
--[SQLite.swift custom-types](https://github.com/stephencelis/SQLite.swift/blob/master/Documentation/Index.md#custom-types)
+- [ModelAdaptor](https://github.com/pujiaxin33/ModelAdaptor): Lightweight ORM library based on `SQLite.swift`.
+- [SQLite.swift custom-types](https://github.com/stephencelis/SQLite.swift/blob/master/Documentation/Index.md#custom-types)
