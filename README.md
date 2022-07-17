@@ -1,5 +1,5 @@
 # SQLiteValueExtension
-Based on the `SQLite.swift` library, it's easy to store `Array`, `Dictionary` or custom data types.
+Based on the [SQLite.swift](https://github.com/stephencelis/SQLite.swift) library, it's easy to store `Array`, `Dictionary` or custom data types.
 
 The principle: Convert the `Array`, `Dictionary`, or custom type to `String` type, and then store it. When querying, convert the string to an `Array`, `Dictionary` or custom data type.
 
